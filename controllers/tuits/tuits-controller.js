@@ -24,11 +24,20 @@ const createTuit = async(req, res) => {
  
  
 //const findTuits  = (req, res) => {}
-const findTuits = async(req, res) =>{
-  const tuits = await tuitsDao.findTuits()
+// const findTuits = async(req, res) =>{
+//   const tuits = await tuitsDao.findTuits()
 
-   res.json(tuits);
-}
+//    res.json(tuits);
+// }
+
+const findTuits = async (req, res) => {
+  try {
+    const tuits = await tuitsDao.findTuits();
+    res.json(tuits);
+  } catch (err) {
+    res.sendStatus(503);
+  }
+};
 
 //const updateTuit = (req, res) => {}
 const updateTuit = async (req, res) => {
